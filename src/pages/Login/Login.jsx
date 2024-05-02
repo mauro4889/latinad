@@ -4,24 +4,26 @@ import { useForm } from 'react-hook-form'
 import login from '../../utils/api/login'
 import { Loader } from '../../components/Loader'
 import { useTokenStore } from '../../store/useTokenStore'
-
-
+import { Toaster, toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
 
 
 export const Login = () => {
     const { register, handleSubmit, reset } = useForm()
     const [loading, setLoading] = useState(false);
     const getToken = useTokenStore((state) => state.getToken)
-
+    const navigate = useNavigate();
 
     const onSubmit = async data => {
         setLoading(true);
         const loged = await login(data);
-        console.log(loged.token)
-        //getToken(data.token)
+        await getToken(loged.token)
         setLoading(false);
-
-        console.log(loged)
+        
+        localStorage.setItem("token", JSON.stringify(loged.token))
+        if(loged != null){
+            navigate('/products')
+        }
     }
 
     return (

@@ -20,6 +20,7 @@
     "react-hook-form": "^7.51.3",
     "react-router-dom": "^6.23.0",
     "sass": "^1.76.0",
+    "sonner": "^1.4.41",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
