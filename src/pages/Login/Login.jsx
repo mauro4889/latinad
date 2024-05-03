@@ -3,7 +3,7 @@ import '../../scss/login.sass'
 import { useForm } from 'react-hook-form'
 import login from '../../utils/api/login'
 import { Loader } from '../../components/Loader'
-import { useTokenStore } from '../../store/useTokenStore'
+import { useTokenStore, useUserStore } from '../../store/useTokenStore'
 import { Toaster, toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 
@@ -11,16 +11,19 @@ import { useNavigate } from 'react-router-dom'
 export const Login = () => {
     const { register, handleSubmit, reset } = useForm()
     const [loading, setLoading] = useState(false);
-    const getToken = useTokenStore((state) => state.getToken)
+    const getName = useUserStore((state) => state.getName)
     const navigate = useNavigate();
 
     const onSubmit = async data => {
         setLoading(true);
         const loged = await login(data);
-        await getToken(loged.token)
         setLoading(false);
-        
+
+        const name = loged.name
+        await getName(name.split(" ")[0])
+
         localStorage.setItem("token", JSON.stringify(loged.token))
+        
         if(loged != null){
             navigate('/products')
         }

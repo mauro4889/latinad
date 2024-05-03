@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../scss/products.scss'
+import { NavLink } from 'react-router-dom'
 
 export const Products = () => {
     return (
@@ -15,13 +16,13 @@ export const Products = () => {
                     </li>
                     <li>
                         <form>
-                            <input className="form-control me-sm-2" type="search" placeholder="Search" />
+                            <input className="form-control me-sm-2 searchInput" type="search" placeholder="Buscar" />
                         </form>
                     </li>
                 </ul>
             </div>
             <div className="btnContainer">
-                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+                <NavLink to="create_product"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button></NavLink>
             </div>
         </div>
     )

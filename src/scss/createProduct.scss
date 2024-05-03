@@ -1,0 +1,25 @@
+.createProductContainer{
+    margin: auto;
+    margin-top: .5em;
+    width: 90vw;
+    height: 82vh;
+    background-color: var(--font-color);
+    border-radius: 10px;
+    color: var(--base);
+    font-size: 15px;
+}
+.labelInput{
+    margin-top: 0;
+}
+.containerInput{
+
+    input{
+        width: 90%;
+        height: 2em;
+        margin: auto;
+    }
+    select{
+        width: 90%;
+        margin: auto;
+    }
+}
