@@ -7,6 +7,14 @@
     border-radius: 10px;
     color: var(--base);
     padding-top: .5em;
+    @media (min-width: 767px) {
+        width: 70vw;
+        height: 600px;
+    }
+    @media (min-width: 1365px) {
+        height: 60vh;
+        margin-top: 3em;
+    }
 }
 
 .labelInput {
@@ -23,6 +31,9 @@
         width: 90%;
         margin: auto;
     }
+    @media (min-width: 1365px) {
+        width: 45%;
+    }
 }
 
 .btnCreate {
@@ -38,5 +49,17 @@
 }
 
 .spanIcon {
-    margin-left: 18em;
+    margin-left: 90%;
+    @media (min-width: 1365px) {
+        margin-top: 3em;
+    }
+}
+
+.formContainer{
+    display: flex;
+    justify-content: space-around;
+    @media (min-width: 1365px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }

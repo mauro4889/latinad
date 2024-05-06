@@ -17,6 +17,7 @@ export const CreateProduct = () => {
         const isCreated = await createProduct(data, isToken)
 
         if (isCreated) {
+            reset()
             toast.success('Producto creado correctamente', { type: 'success' });
         } else {
             toast.error('Error al crear el producto', { type: 'error' });
@@ -27,7 +28,7 @@ export const CreateProduct = () => {
         <div className='createProductContainer'>
             <NavLink to='/products'><span className='spanIcon'><i class="fa-solid fa-person-walking-arrow-right"></i></span></NavLink>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='d-flex flex-column'>
+                <div className='formContainer'>
                     <div className='containerInput'>
                         <label className="col-form-label ms-4 labelInput" for="inputDefault">Nombre</label>
                         <input type="text" class="form-control" id="inputDefault" {...register("name", { required: true })} />

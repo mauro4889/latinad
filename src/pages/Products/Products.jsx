@@ -3,13 +3,15 @@ import '../../scss/products.scss'
 import { NavLink } from 'react-router-dom'
 import { getProducts } from '../../utils/api/product'
 import { ProductCard } from '../../components/ProductCard'
+import { motion } from 'framer-motion'
+
 
 export const Products = () => {
     const [isProducts, setIsProducts] = useState([])
     const [isToken, setIsToken] = useState()
     const [search, setSearch] = useState('')
     const [filterType, setFilterType] = useState('');
-    
+
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem('token'));
         setIsToken(token);
@@ -33,7 +35,7 @@ export const Products = () => {
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Filtrar</a>
                         <div className="dropdown-menu">
-                        <a className="dropdown-item" onClick={() => setFilterType('')}>Todos</a>
+                            <a className="dropdown-item" onClick={() => setFilterType('')}>Todos</a>
                             <a className="dropdown-item" onClick={() => setFilterType('outdoor')}>Outdoor</a>
                             <a className="dropdown-item" onClick={() => setFilterType('indoor')}>Indoor</a>
                         </div>
@@ -45,18 +47,20 @@ export const Products = () => {
                     </li>
                 </ul>
             </div>
-            <div className='products'>
+
+            <motion.div className='products'>
                 {isProducts
                     .filter((item) => {
                         if (filterType) {
                             return item.type === filterType;
                         }
-                            return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search.toLowerCase());
+                        return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search.toLowerCase());
                     })
                     .map((product) => (
                         <ProductCard product={product} token={isToken} key={product.id} />
-                    ))}
-            </div>
+                    )
+                    )}
+            </motion.div>
             <div className="btnContainer">
                 <NavLink to="create_product"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button></NavLink>
             </div>

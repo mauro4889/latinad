@@ -1,9 +1,29 @@
 .cardContainer {
     width: 95%;
+    height: 540px;
     margin: auto;
     img {
         width: 60%;
         margin: .5em auto;
+    }
+    @media (min-width: 767px){
+        width: 30%;
+        font-size: 14px;
+        h3{
+            padding: 5px;
+            font-size: 15px;
+            height: 45px;
+            text-align: center;
+        }
+    }
+    @media (min-width: 1023px) {
+        h3{
+            margin-top: .5em;
+        }
+    }
+    @media (min-width: 1365px) {
+        width: 25%;
+        margin: auto 2em;
     }
 }
 
@@ -11,5 +31,19 @@
     background-color: #fff;
     button {
         background-color: #fff;
+    }
+    @media (min-width: 767px) {
+        height: 30px;
+        padding: 0;
+    }
+}
+
+
+.cardBodyContainer{
+    @media (min-width: 767px) {
+        max-height: 30vh;
+        p{
+            text-align: center;
+        }
     }
 }

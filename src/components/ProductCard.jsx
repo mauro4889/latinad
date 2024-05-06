@@ -1,9 +1,8 @@
-import { useStore } from 'zustand'
 import '../scss/productCard.scss'
 import { deleteProducts } from '../utils/api/product'
 import Swal from 'sweetalert2'
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 
 export const ProductCard = (product) => {
@@ -50,7 +49,13 @@ export const ProductCard = (product) => {
     }
 
     return (
-        <div className="card mb-3 cardContainer">
+        <motion.div className="card mb-3 cardContainer"
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ opacity:1 }}
+            exit={{ opacity: 0}}
+            transition={{ duration: 0.5 }}
+        >
             <h3 className="card-header">{name}</h3>
             <img src={picture_url} alt={name} />
             <div className="card-body border-top cardBodyContainer">
@@ -66,6 +71,6 @@ export const ProductCard = (product) => {
                 <button className='border-0' onClick={()=> navigate(`/products/update/${id}`)}><i class="fa-solid fa-pencil"></i></button>
                 <button className='border-0' onClick={handleClick}><i class="fa-solid fa-trash"></i></button>
             </div>
-        </div>
+        </motion.div>
     )
 }

@@ -20,6 +20,24 @@
             width: 45%;
         }
     }
+    @media (min-width: 767px) {
+        ul{
+            justify-content: space-between;
+            margin-left: 1em;
+        }
+    }
+    @media (min-width: 1023px) {
+        ul{
+            margin-left: 2em;
+            margin-top: 1em;
+        }
+    }
+    @media (min-width: 1365px) {
+        ul{
+            justify-content: space-between;
+            margin-left: 2.5em;
+        }
+    }
 }
 
 .btnContainer {
@@ -41,6 +59,10 @@
     width: 75%;
     height: 2em;
     margin-left: 2em;
+    @media (min-width: 1365px) {
+        width: 50%;
+        margin-left: 10em;
+    }
 }
 
 .fa-pencil {
@@ -49,4 +71,13 @@
 
 .fa-trash {
     color: rgb(0, 0, 0)
+}
+
+.products{
+    @media (min-width: 767px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }
