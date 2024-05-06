@@ -1,28 +1,32 @@
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import '../../scss/createProduct.scss'
-import { createProduct } from '../../utils/api/product'
-import { useEffect, useState } from 'react'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { Toaster, toast } from 'sonner'
-import { NavLink } from 'react-router-dom'
+import { updateProduct } from '../../utils/api/product'
 
-export const CreateProduct = () => {
-    const { register, handleSubmit, reset } = useForm()
+export const UpdateProduct = () => {
+    const { register, handleSubmit } = useForm()
     const [isToken, setIsToken] = useState()
+    const { id } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         setIsToken(JSON.parse(localStorage.getItem("token")))
     })
 
     const onSubmit = async data => {
-        const isCreated = await createProduct(data, isToken)
+        const isCreated = await updateProduct(id, data, isToken)
 
         if (isCreated) {
-            toast.success('Producto creado correctamente', { type: 'success' });
+            toast.success('Producto actializado correctamente', { type: 'success' });
+
+            setTimeout(() => {
+                navigate('/products');
+            }, 2000);
         } else {
-            toast.error('Error al crear el producto', { type: 'error' });
+            toast.error('Error al actualizar el producto', { type: 'error' });
         }
     }
-
     return (
         <div className='createProductContainer'>
             <NavLink to='/products'><span className='spanIcon'><i class="fa-solid fa-person-walking-arrow-right"></i></span></NavLink>
@@ -55,8 +59,8 @@ export const CreateProduct = () => {
                             <option value='outdoor'>Outdoor</option>
                         </select>
                     </div>
-                    <Toaster richColors/>
-                    <button type="submit" class="btn btn-outline-primary btnCreate">Crear</button>
+                    <Toaster richColors />
+                    <button type="submit" class="btn btn-outline-primary btnUpdate">Actualizar</button>
                 </div>
             </form>
         </div>

@@ -21,6 +21,7 @@
     "react-router-dom": "^6.23.0",
     "sass": "^1.76.0",
     "sonner": "^1.4.41",
+    "sweetalert2": "^11.10.8",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

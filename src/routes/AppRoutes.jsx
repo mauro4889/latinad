@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { Products } from "../pages/Products/Products"
 import { NavBar } from "../components/NavBar"
 import { CreateProduct } from "../pages/CreateProduct/CreateProduct"
+import { UpdateProduct } from "../pages/UpdateProduct/UpdateProduct"
 
 
 
@@ -13,6 +14,7 @@ export const AppRoutes = () => {
             <Routes>
                 <Route path="/products" element={<Products />} />
                 <Route path="products/create_product" element={<CreateProduct/>}/>
+                <Route path='products/update/:id' element={<UpdateProduct/>}/>
             </Routes>
         </>
     )
