@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../../scss/login.sass'
+import '../../scss/login.scss'
 import { useForm } from 'react-hook-form'
 import login from '../../utils/api/auth'
 import { Loader } from '../../components/Loader'

@@ -11,7 +11,7 @@ export const ProductCard = (product) => {
     const navigate = useNavigate()
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-            confirmButton: "btn btn-success",
+            confirmButton: "btn btn-success ml-2",
             cancelButton: "btn btn-danger"
         },
         buttonsStyling: false
@@ -49,7 +49,7 @@ export const ProductCard = (product) => {
     }
 
     return (
-        <motion.div className="card mb-3 cardContainer"
+        <motion.div className="card mb-3 mt-5 cardContainer"
             layout
             initial={{ opacity: 0 }}
             animate={{ opacity:1 }}

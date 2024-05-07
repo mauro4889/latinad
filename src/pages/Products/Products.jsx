@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../../scss/products.scss'
-import { NavLink } from 'react-router-dom'
 import { getProducts } from '../../utils/api/product'
 import { ProductCard } from '../../components/ProductCard'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 
 export const Products = () => {
@@ -11,6 +11,7 @@ export const Products = () => {
     const [isToken, setIsToken] = useState()
     const [search, setSearch] = useState('')
     const [filterType, setFilterType] = useState('');
+    const navigate = useNavigate()
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem('token'));
@@ -29,7 +30,7 @@ export const Products = () => {
     };
 
     return (
-        <div className='productsContainer mb-2 pb-1'>
+        <div className='productsContainer mb-2'>
             <div className="filterNav">
                 <ul>
                     <li className="nav-item dropdown">
@@ -41,9 +42,12 @@ export const Products = () => {
                         </div>
                     </li>
                     <li>
+                        <div className='groupFilterBar'>
                         <form>
                             <input onChange={(e) => setSearch(e.target.value)} className="form-control me-sm-2 searchInput" type="search" placeholder="Buscar" />
                         </form>
+                        <button className='btn btn-outline-primary createBtn' onClick={()=> navigate('/products/create_product')}><i class="fa-solid fa-plus"></i> Nuevo producto</button>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -61,9 +65,6 @@ export const Products = () => {
                     )
                     )}
             </motion.div>
-            <div className="btnContainer">
-                <NavLink to="create_product"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button></NavLink>
-            </div>
         </div>
     )
 }

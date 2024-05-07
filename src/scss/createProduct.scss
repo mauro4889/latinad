@@ -11,9 +11,21 @@
         width: 70vw;
         height: 600px;
     }
+    @media (min-width: 1023px) {
+        width: 65vw;
+    }
     @media (min-width: 1365px) {
+        width: 60vw;
         height: 60vh;
         margin-top: 3em;
+    }
+    @media (min-width: 1910px) {
+        width: 40vw;
+        height: 40vh;
+    }
+    @media (min-width: 2550px) {
+        width: 30vw;
+        height: 45vh;
     }
 }
 
@@ -55,9 +67,10 @@
     }
 }
 
-.formContainer{
+.formContainer {
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
     @media (min-width: 1365px) {
         flex-direction: row;
         flex-wrap: wrap;
