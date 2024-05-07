@@ -5,7 +5,7 @@ import { ProductCard } from '../../components/ProductCard'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { Loader } from '../../components/Loader'
-import { DetailProduct } from '../../components/DetailProductModal'
+import { Pagination } from '../../components/Pagination'
 
 
 export const Products = () => {
@@ -14,7 +14,13 @@ export const Products = () => {
     const [search, setSearch] = useState('')
     const [filterType, setFilterType] = useState('');
     const [loading, setLoading] = useState(false);
+    const [productPerPage, setProductPerPage] = useState(6)
+    const [currentPage, setCurrentPage] = useState(1)
+    const totalProduct = isProducts.length
     const navigate = useNavigate()
+
+    const lastIndex = currentPage * productPerPage
+    const firstIndex = lastIndex - productPerPage
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem('token'));
@@ -29,7 +35,7 @@ export const Products = () => {
 
     const getListProducts = async () => {
         setLoading(true);
-        const data = await getProducts(10, isToken);
+        const data = await getProducts(100, isToken);
         if (data) {
             setLoading(false);
             await setIsProducts(data.data);
@@ -44,9 +50,18 @@ export const Products = () => {
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Filtrar</a>
                         <div className="dropdown-menu">
-                            <a className="dropdown-item" onClick={() => setFilterType('')}>Todos</a>
-                            <a className="dropdown-item" onClick={() => setFilterType('outdoor')}>Outdoor</a>
-                            <a className="dropdown-item" onClick={() => setFilterType('indoor')}>Indoor</a>
+                            <a className="dropdown-item" onClick={() => {
+                                setFilterType('')
+                                setCurrentPage(1)
+                            }}>Todos</a>
+                            <a className="dropdown-item" onClick={() => {
+                                setFilterType('outdoor')
+                                setCurrentPage(1)
+                                }}>Outdoor</a>
+                            <a className="dropdown-item" onClick={() => {
+                                setFilterType('indoor')
+                                setCurrentPage(1)
+                                }}>Indoor</a>
                         </div>
                     </li>
                     <li>
@@ -70,9 +85,14 @@ export const Products = () => {
                     .map((product) => (
                         <ProductCard product={product} token={isToken} key={product.id} />
                     )
-                    )}
+                    ).slice(firstIndex, lastIndex)}
             </motion.div>
             {loading && <Loader />}
+            <Pagination
+                productPerPage={productPerPage}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                totalProduct={totalProduct} />
         </div>
     )
 }

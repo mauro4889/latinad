@@ -93,15 +93,26 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-    align-items: stretch; 
+    align-items: stretch;
     justify-content: space-between;
     padding: 1em;
     @media (min-width: 767px) {
+        margin: auto;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        align-content: space-between;
+        align-content: center;
         flex-wrap: wrap;
         margin-bottom: 2em;
+        column-gap: 2em;
+    }
+    @media (min-width: 1023px) {
+        column-gap: 2.5em;
+    }
+    @media (min-width: 1439px) {
+        column-gap: 4.8em;
+    }
+    @media (min-width: 1910px) {
+        column-gap: 8em;
     }
 }

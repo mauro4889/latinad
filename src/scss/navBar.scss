@@ -1,10 +1,23 @@
 .navbar-nav {
     @media (min-width: 1023px) {
-        margin: 0;
-        margin-left: 2em;
-        justify-content: space-between;
+        margin-right: 3em;
+        justify-content: flex-end;
         align-items: center;
-        width: 95%;
+        width: 30%;
+    }
+}
+
+.navbar-collapse {
+    margin-left: 1em;
+    p {
+        color: #000;
+        padding-top: 1em;
+        font-weight: bold;
+    }
+    @media (min-width: 1023px) {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 2em;
     }
 }
 
@@ -21,5 +34,13 @@
     }
     @media (min-width: 985px) {
         width: 5%;
+    }
+}
+
+.logOutBtn {
+    @media (min-width: 1023px) {
+        padding-left: 5em;
+        margin-right: 2em;
+        background-color: transparent;
     }
 }

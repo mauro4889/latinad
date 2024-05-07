@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import latinad_logo from '../assets/latinad_logo.svg'
 import { useUserStore } from '../store/useTokenStore'
 import '../scss/navBar.scss'
+import { NavLink } from 'react-router-dom'
 
 export const NavBar = () => {
     const [name, setName] = useState('')
@@ -10,6 +11,11 @@ export const NavBar = () => {
     useEffect(() => {
         setName(firstName)
     }, [firstName])
+
+    const logOut = () => {
+        localStorage.removeItem("token");
+        window.location.reload();
+    }
 
     return (
         <div>
@@ -20,12 +26,15 @@ export const NavBar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarColor03">
-                        <ul className="navbar-nav me-auto">
-                            <li className="nav-item">
-                                <a className="nav-link active" href="#">Productos</a>
-                            </li>
+                        <div>
+                            <NavLink to='/products'><p>Productos</p></NavLink>
+                        </div>
+                        <ul className="navbar-nav">
                             <li className="nav-item">
                                 <span className='text-success-emphasis'>Hola <b>{name}</b></span>
+                            </li>
+                            <li>
+                                <button className='border-0 mt-2 logOutBtn' onClick={logOut}><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                             </li>
                         </ul>
                     </div>

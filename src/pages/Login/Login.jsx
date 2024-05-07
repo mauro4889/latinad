@@ -14,29 +14,30 @@ export const Login = () => {
     const getName = useUserStore((state) => state.getName)
     const navigate = useNavigate();
 
-    const onSubmit = async data => {
+    const onSubmit = async (data) => {
         setLoading(true);
         try {
+            console.log(data)
             const loged = await login(data);
-            const name = loged.name
-            await getName(name.split(" ")[0])
+            const name = loged.name;
+            await getName(name.split(" ")[0]);
 
-            localStorage.setItem("token", JSON.stringify(loged.token))
+            localStorage.setItem("token", JSON.stringify(loged.token));
 
-            if (loged != null) {
+            if (loged.response?.data === 'Incorrect user or password') {
+                toast.error('Usuario o contraseña incorrectos');
+            } else {
                 setLoading(false);
-                navigate('/products')
-                setLoading(false)
+                navigate('/products');
             }
         } catch (error) {
+            console.log(error);
+            toast.error('Error al iniciar sesión');
+        } finally {
             setLoading(false);
-            if (error.response && error.response.status === 401) {
-                toast.error('Usuario o contraseña incorrectos')
-            } else {
-                toast.error('Error al iniciar sesión')
-            }
         }
-    }
+    };
+
 
     return (
         <div className="loginContainer">

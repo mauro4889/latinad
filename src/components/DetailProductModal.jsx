@@ -9,8 +9,8 @@ export const DetailProduct = ({product}, token) => {
     const navigate = useNavigate()
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-            confirmButton: "btn btn-success ml-2",
-            cancelButton: "btn btn-danger"
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger custom-cancel"
         },
         buttonsStyling: false
     });

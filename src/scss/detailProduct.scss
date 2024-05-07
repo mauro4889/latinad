@@ -1,9 +1,9 @@
-.btnDetail{
+.btnDetail {
     width: 40%;
     margin: auto;
 }
 
-.imgDetail{
+.imgDetail {
     width: 100%;
     @media (min-width: 767px) {
         margin: auto;
@@ -14,17 +14,20 @@
     }
 }
 
-.footerDetail{
+.footerDetail {
     width: 100%;
     display: flex;
     justify-content: space-around;
     margin: 1em auto;
+    button {
+        background-color: #fff;
+    }
 }
 
-.detailCardContainer{
+.detailCardContainer {
     width: 90vw;
     margin: auto;
-    h5{
+    h5 {
         color: var(--base);
     }
     @media (min-width: 767px) {
@@ -34,21 +37,24 @@
         width: 60vw;
         font-size: 20px;
     }
-    @media (min-width: 1365px) {
-        
-    }
+    @media (min-width: 1365px) {}
 }
 
-.titleContainer{
+.titleContainer {
     display: flex;
     justify-content: space-between;
-    button{
+    button {
         color: var(--base);
         background-color: #fff;
     }
     @media (min-width: 1023px) {
-        h5, button{
+        h5,
+        button {
             font-size: 25px;
         }
     }
+}
+
+.swal2-cancel {
+    margin-right: 2em;
 }

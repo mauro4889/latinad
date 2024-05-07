@@ -20,7 +20,7 @@ function App() {
             </ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
-      <span className='imgSpanContainer'><img src={url} alt="Fondo de imagen"/></span>
+      <span className='imgSpanContainer'><img src='./src/assets/bk-latinad-main.png' alt="Fondo de imagen"/></span>
     </div>
   )
 }

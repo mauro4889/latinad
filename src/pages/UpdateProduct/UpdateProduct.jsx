@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { Toaster, toast } from 'sonner'
 import { updateProduct } from '../../utils/api/product'
+import '../../scss/createProduct.scss'
 
 export const UpdateProduct = () => {
     const { register, handleSubmit } = useForm()
@@ -31,7 +32,7 @@ export const UpdateProduct = () => {
         <div className='createProductContainer'>
             <NavLink to='/products'><span className='spanIcon'><i class="fa-solid fa-person-walking-arrow-right"></i></span></NavLink>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='d-flex flex-column'>
+                <div className='formContainer'>
                     <div className='containerInput'>
                         <label className="col-form-label ms-4 labelInput" for="inputDefault">Nombre</label>
                         <input type="text" class="form-control" id="inputDefault" {...register("name", { required: true })} />

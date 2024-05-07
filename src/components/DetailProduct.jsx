@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getProductById } from '../utils/api/product'
+import { deleteProducts, getProductById } from '../utils/api/product'
 import '../scss/detailProduct.scss'
 import Swal from 'sweetalert2'
-import { Loader } from './Loader'
 
 export const DetailProduct = () => {
     const [isToken, setIsToken] = useState()
     const [product, setProduct] = useState()
-    const [loading, setLoading] = useState(false);
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -19,7 +17,6 @@ export const DetailProduct = () => {
     }, []);
 
     useEffect(() => {
-        console.log(isToken)
         if (isToken) {
             getProduct()
         }
@@ -30,10 +27,8 @@ export const DetailProduct = () => {
     }, []);
 
     const getProduct = async () => {
-        setLoading(true);
         const data = await getProductById(id, isToken)
         if (data) {
-            setLoading(false);
             await setProduct(data)
         }
     }
@@ -56,13 +51,13 @@ export const DetailProduct = () => {
             reverseButtons: true
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const deleted = await deleteProducts(id, token);
+                const deleted = await deleteProducts(id, isToken);
                 if (deleted) {
                     swalWithBootstrapButtons.fire({
                         title: "Eliminado!",
                         icon: "success"
                     }).then(() => {
-                        window.location.reload();
+                        navigate('/products')
                     });;
                 }
             } else if (
@@ -96,7 +91,6 @@ export const DetailProduct = () => {
                 <button className='border-0' data-bs-dismiss="modal" onClick={() => navigate(`/products/update/${id}`)}><i class="fa-solid fa-pencil"></i></button>
                 <button className='border-0' onClick={handleClick}><i class="fa-solid fa-trash"></i></button>
             </div>
-            {loading && <Loader />}
         </div>
     )
 }

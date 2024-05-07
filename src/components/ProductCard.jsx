@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 
 
 export const ProductCard = (product) => {
-    const token = JSON.parse(localStorage.getItem('token'))
     const { id, name, picture_url } = product.product
     const navigate = useNavigate()
     return (
@@ -17,8 +16,8 @@ export const ProductCard = (product) => {
             transition={{ duration: 0.5 }}
         >
             <h3 className="card-header">{name}</h3>
-            <img src={picture_url} alt={name} />
-            <button type="button" class="btn btn-primary my-3 btnDetail" onClick={()=> navigate(`/products/detail/${id}`)}>Detalle</button>
+            <img className='border-bottom' src={picture_url} alt={name} />
+            <button type="button" class="btn btn-outline-primary my-3 btnDetail" onClick={()=> navigate(`/products/detail/${id}`)}>Detalle</button>
             {/* <DetailProduct product={product} token={token} /> */}
         </motion.div>
     )
