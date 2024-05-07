@@ -17,3 +17,15 @@
         }
     }
 }
+
+.notFoundCard {
+    margin: auto;
+    margin-top: 2em;
+    width: 95vw;
+    @media (min-width: 767px) {
+        width: 60vw;
+    }
+    @media (min-width: 1023px) {
+        width: 30vw;
+    }
+}

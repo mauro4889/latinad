@@ -4,6 +4,7 @@ import { NavBar } from "../components/NavBar"
 import { CreateProduct } from "../pages/CreateProduct/CreateProduct"
 import { UpdateProduct } from "../pages/UpdateProduct/UpdateProduct"
 import { DetailProduct } from "../components/DetailProduct"
+import { NotFound } from "../components/NotFound"
 
 
 
@@ -17,6 +18,7 @@ export const AppRoutes = () => {
                 <Route path="products/create_product" element={<CreateProduct/>}/>
                 <Route path='products/update/:id' element={<UpdateProduct/>}/>
                 <Route path='products/detail/:id' element={<DetailProduct/>}/>
+                <Route path='*' element={<NotFound />} />
             </Routes>
         </>
     )
