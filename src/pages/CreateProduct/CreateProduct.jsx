@@ -26,7 +26,7 @@ export const CreateProduct = () => {
 
     return (
         <div className='createProductContainer'>
-            <NavLink to='/products'><span className='spanIcon'><i class="fa-solid fa-person-walking-arrow-right"></i></span></NavLink>
+            <NavLink to='/products'><span className='spanIcon'><i class="fa-solid fa-x"></i></span></NavLink>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='formContainer'>
                     <div className='containerInput'>

@@ -1,15 +1,12 @@
 .productsContainer {
     width: 95vw;
-    min-height: 95vh;
     background-color: var(--font-color);
     margin: auto;
     margin-top: 0.9em;
-    padding-bottom: 1em;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    position: relative;
 }
 
 .filterNav {
@@ -93,6 +90,12 @@
 }
 
 .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: stretch; 
+    justify-content: space-between;
+    padding: 1em;
     @media (min-width: 767px) {
         display: flex;
         justify-content: space-between;

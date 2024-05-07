@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export const createProduct = async (data, token) => {
     try {
         const response = await fetch(`https://challenge-front-7fw1.onrender.com/display`, {
@@ -30,6 +32,21 @@ export const getProducts = async (size, token) => {
         return error
     }
 }
+
+export const getProductById = async (id, token) => {
+    try {
+        const response = await axios.get(`https://challenge-front-7fw1.onrender.com/display/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
 
 export const updateProduct = async (id, data, token) => {
     try {

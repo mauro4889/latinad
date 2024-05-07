@@ -1,0 +1,54 @@
+.btnDetail{
+    width: 40%;
+    margin: auto;
+}
+
+.imgDetail{
+    width: 100%;
+    @media (min-width: 767px) {
+        margin: auto;
+        width: 70%;
+    }
+    @media (min-width: 1365px) {
+        width: 40%;
+    }
+}
+
+.footerDetail{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 1em auto;
+}
+
+.detailCardContainer{
+    width: 90vw;
+    margin: auto;
+    h5{
+        color: var(--base);
+    }
+    @media (min-width: 767px) {
+        width: 70vw;
+    }
+    @media (min-width: 1023px) {
+        width: 60vw;
+        font-size: 20px;
+    }
+    @media (min-width: 1365px) {
+        
+    }
+}
+
+.titleContainer{
+    display: flex;
+    justify-content: space-between;
+    button{
+        color: var(--base);
+        background-color: #fff;
+    }
+    @media (min-width: 1023px) {
+        h5, button{
+            font-size: 25px;
+        }
+    }
+}
